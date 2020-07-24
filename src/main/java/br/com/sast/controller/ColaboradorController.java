@@ -1,4 +1,4 @@
-package br.com.saec.controller;
+package br.com.sast.controller;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.saec.model.Colaborador;
-import br.com.saec.model.DadosEmpresa;
-import br.com.saec.service.ColaboradorService;
+import br.com.sast.model.Colaborador;
+import br.com.sast.model.DadosEmpresa;
+import br.com.sast.service.ColaboradorService;
 
 @RestController
 @RequestMapping("api")

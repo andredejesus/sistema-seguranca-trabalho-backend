@@ -1,4 +1,4 @@
-package br.com.saec.model;
+package br.com.sast.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;

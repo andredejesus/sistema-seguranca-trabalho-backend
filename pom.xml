@@ -8,10 +8,10 @@
 		<version>2.3.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.saec</groupId>
-	<artifactId>saec</artifactId>
+	<groupId>br.com.sast</groupId>
+	<artifactId>sast</artifactId>
 	<version>1.0</version>
-	<name>saec</name>
+	<name>sast</name>
 	<description>Projeto para realizar a administração de trabalhos realizados por profissionais de segurança do trabalho</description>
 
 	<properties>

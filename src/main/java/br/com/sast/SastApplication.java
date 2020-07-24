@@ -1,13 +1,13 @@
-package br.com.saec;
+package br.com.sast;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SaecApplication {
+public class SastApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SaecApplication.class, args);
+		SpringApplication.run(SastApplication.class, args);
 	}
 
 }

@@ -1,11 +1,11 @@
-package br.com.saec.repository;
+package br.com.sast.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import br.com.saec.model.Colaborador;
+import br.com.sast.model.Colaborador;
 
 @Repository
 public interface ColaboradorRepository extends JpaRepository<Colaborador, Short> {

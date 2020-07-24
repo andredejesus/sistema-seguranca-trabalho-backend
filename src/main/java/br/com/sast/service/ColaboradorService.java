@@ -1,8 +1,8 @@
-package br.com.saec.service;
+package br.com.sast.service;
 
 import java.util.List;
 
-import br.com.saec.model.Colaborador;
+import br.com.sast.model.Colaborador;
 
 public interface ColaboradorService {
 

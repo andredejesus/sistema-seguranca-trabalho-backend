@@ -1,14 +1,14 @@
-package br.com.saec.service;
+package br.com.sast.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.saec.model.Colaborador;
-import br.com.saec.model.DadosEmpresa;
-import br.com.saec.repository.ColaboradorRepository;
-import br.com.saec.repository.DadosEmpresaRepository;
+import br.com.sast.model.Colaborador;
+import br.com.sast.model.DadosEmpresa;
+import br.com.sast.repository.ColaboradorRepository;
+import br.com.sast.repository.DadosEmpresaRepository;
 
 @Service
 public class ColaboradorServiceImpl implements ColaboradorService {
