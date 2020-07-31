@@ -36,7 +36,7 @@ public class Colaborador implements Serializable {
 	private String nome;
 	
 	@Column(nullable = false)
-	private LocalDate data_nascimento;
+	private String data_nascimento;
 	
 	@Column
 	private String rg;
@@ -69,11 +69,11 @@ public class Colaborador implements Serializable {
 		this.nome = nome;
 	}
 
-	public LocalDate getData_nascimento() {
+	public String getData_nascimento() {
 		return data_nascimento;
 	}
 
-	public void setData_nascimento(LocalDate data_nascimento) {
+	public void setData_nascimento(String data_nascimento) {
 		this.data_nascimento = data_nascimento;
 	}
 

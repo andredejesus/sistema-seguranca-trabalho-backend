@@ -1,5 +1,6 @@
 package br.com.sast.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,28 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 	public void deletarColaborador(Short id) {
 		cr.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Colaborador> filtroColaboradores(String nome, 
+												 String rg, 
+												 String cpf, 
+												 String data_nascimento, 
+												 String data_admissao, 
+												 String funcao,
+												 String departamento,
+												 String lotacao,
+												 String situacao) {
+		
+		return cr.filtroColaboradores(nome, 
+									  rg, 
+									  cpf, 
+									  data_nascimento, 
+									  data_admissao, 
+									  funcao,
+									  departamento,
+									  lotacao,
+									  situacao);
 	}
 
 }

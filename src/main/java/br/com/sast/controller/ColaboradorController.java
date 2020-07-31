@@ -1,10 +1,14 @@
 package br.com.sast.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,4 +57,30 @@ public class ColaboradorController {
 		colaboradorService.deletarColaborador(id);		
 	}
 
+	
+	@GetMapping("colaboradores/filtro")
+	public List<Colaborador> filtroColaborador(@PathParam("nome") String nome, 
+											   @PathParam("rg") String rg, 
+											   @PathParam("cpf") String cpf,
+											   @PathParam("data_nascimento") String data_nascimento,
+											   @PathParam("data_admissao") String data_admissao,
+											   @PathParam("funcao") String funcao,
+											   @PathParam("departamento") String departamento,
+											   @PathParam("lotacao") String lotacao,
+											   @PathParam("situacao") String situacao){
+		
+
+		
+	return colaboradorService.filtroColaboradores(nome, 
+			  rg, 
+			  cpf, 
+			  data_nascimento,
+			  data_admissao,
+			  funcao,
+			  departamento,
+			  lotacao,
+			  situacao);
+
+	}
+	
 }

@@ -31,9 +31,8 @@ public class DadosEmpresa {
 	@NotEmpty
 	private String departamento;
 	
-	@Column
-	@NotNull
-	private LocalDate data_admissao;
+	@Column(nullable = false)
+	private String data_admissao;
 	
 	@Column(length = 50, nullable = false)
 	@NotEmpty
@@ -78,11 +77,11 @@ public class DadosEmpresa {
 		this.departamento = departamento;
 	}
 
-	public LocalDate getData_admissao() {
+	public String getData_admissao() {
 		return data_admissao;
 	}
 
-	public void setData_admissao(LocalDate data_admissao) {
+	public void setData_admissao(String data_admissao) {
 		this.data_admissao = data_admissao;
 	}
 
