@@ -10,6 +10,7 @@ import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,13 +32,13 @@ public class ColaboradorController {
 	@Autowired
 	private ColaboradorService colaboradorService;
 	
-	@PostMapping("colaborador")
+	@PostMapping("colaboradores")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void salvarColaborador(@RequestBody @Valid Colaborador colaborador) {
 		colaboradorService.salvarColaborador(colaborador);
 	}
 	
-	@GetMapping("colaborador/{id}")
+	@GetMapping("colaboradores/{id}")
 	public Colaborador buscarColaborador(@PathVariable("id") Short id) {
 		return colaboradorService.buscarColaborador(id);
 	}
@@ -47,12 +48,12 @@ public class ColaboradorController {
 		return colaboradorService.buscaColaboradores();
 	}
 	
-	@PutMapping("colaborador")
+	@PutMapping("colaboradores")
 	public void editarColaborador(@RequestBody @Valid Colaborador colaborador) {
 		colaboradorService.editarColaborador(colaborador);
 	}
 	
-	@DeleteMapping("colaborador/{id}")
+	@DeleteMapping("colaboradores/{id}")
 	public void deletarColaborador(@PathVariable Short id) {
 		colaboradorService.deletarColaborador(id);		
 	}
