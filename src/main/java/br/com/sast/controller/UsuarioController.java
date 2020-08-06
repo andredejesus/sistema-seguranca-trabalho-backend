@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
+import br.com.sast.exception.UsuarioCadastradoException;
 import br.com.sast.model.Usuario;
 import br.com.sast.service.UsuarioServiceImpl;
 
@@ -27,7 +29,16 @@ public class UsuarioController {
 	@PostMapping("/usuarios")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void salvarUsuario(@RequestBody @Valid Usuario usuario) {
-		us.salvaUsuario(usuario);
+		
+		try {
+			
+			us.salvaUsuario(usuario);
+			
+		} catch (UsuarioCadastradoException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+		}
+		
+		
 	}
 	
 	@GetMapping("/usuarios")

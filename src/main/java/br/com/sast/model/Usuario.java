@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Usuario {
@@ -13,10 +14,12 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Short id;
 
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
+	@NotEmpty(message = "{campo.senha.obrigatorio}")
 	private String username;
 	
-	@Column
+	@Column(nullable = false)
+	@NotEmpty(message = "{campo.login.obrigatorio}")
 	private String password;
 	
 	// Gets e Sets 

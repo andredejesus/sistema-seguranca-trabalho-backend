@@ -1,7 +1,6 @@
 package br.com.sast.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,17 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.hibernate.validator.constraints.br.CPF;
 
 
 @Entity
 public class Colaborador implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,18 +26,20 @@ public class Colaborador implements Serializable {
 	private Short id;
 	
 	@Column(length = 100, nullable = false)
-	@NotEmpty
+	@NotEmpty(message = "{campo.nome.obrigatorio}")
 	private String nome;
 	
 	@Column(nullable = false)
+	@NotEmpty(message = "{campo.dataNascimento.obrigatorio}")
 	private String data_nascimento;
 	
 	@Column
 	private String rg;
 	
 	
-	//@CPF
-	@Column(nullable = false, unique = true)
+	@CPF(message = "{campo.cpf.invalido}")
+	@Column(nullable = false, unique = false)
+	@NotEmpty(message = "{campo.cpf.obrigatorio}")
 	private String cpf;
 	
 	@OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)

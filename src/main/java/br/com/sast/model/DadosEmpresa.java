@@ -7,10 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class DadosEmpresa {
@@ -20,27 +17,24 @@ public class DadosEmpresa {
 	private Short id; 
 	
 	@Column(length = 50, nullable = false)
-	@NotEmpty
+	@NotEmpty(message = "{campo.funcao.obrigatorio}")
 	private String funcao;
 	
 	@Column(length = 50, nullable = false)
-	@NotEmpty
+	@NotEmpty(message = "{campo.lotacao.obrigatorio}")
 	private String lotacao;
 	
 	@Column(length = 50, nullable = false)
-	@NotEmpty
+	@NotEmpty(message = "{campo.departamento.obrigatorio}")
 	private String departamento;
 	
 	@Column(nullable = false)
+	@NotEmpty(message = "{campo.dataAdmissao.obrigatorio}")
 	private String data_admissao;
 	
 	@Column(length = 50, nullable = false)
-	@NotEmpty
+	@NotEmpty(message = "{campo.situacao.obrigatorio}")
 	private String situacao;
-	
-	//@OneToOne
-	//@JoinColumn(name = "id_colaborador",  unique = true, nullable = false)
-	//private Colaborador colaborador;
 	
 	
 	/* Gets e Sets */
