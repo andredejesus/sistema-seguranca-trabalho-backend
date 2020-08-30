@@ -15,7 +15,7 @@ public interface ColaboradorRepository extends JpaRepository<Colaborador, Short>
 	
 	@Query("SELECT c FROM Colaborador c WHERE c.id = :id")
 	Colaborador buscarColaborador(@Param("id") Short id);
-	//"or c.dadosEmpresa.data_admissao = :data_admissao"
+	
 	@Query("SELECT c FROM Colaborador c JOIN c.dadosEmpresa WHERE c.nome = :nome "
 											  + "or c.rg = :rg "
 											  + "or c.cpf = :cpf "
