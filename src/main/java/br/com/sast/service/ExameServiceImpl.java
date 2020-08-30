@@ -34,5 +34,16 @@ public class ExameServiceImpl implements ExameService {
 		return er.save(exame);
 	}
 
+	@Override
+	public void deletaExame(Short id) {
+		er.deleteById(id);
+		
+	}
+
+	@Override
+	public void deletaExamePorIdAso(Short id_aso) {
+		er.deletaExamePorIdAso(id_aso);
+	}
+
 
 }

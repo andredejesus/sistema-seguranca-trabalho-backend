@@ -15,5 +15,6 @@ public interface ExamesRepository extends JpaRepository<Exames, Short> {
 	@Query("SELECT e FROM Exames e WHERE e.id_aso = :id_aso")
 	List<Exames> buscaExamesPorAso(@Param("id_aso") Short id_aso);
 
-
+	@Query("delete from Exames e where e.id_aso = ?1")
+	void deletaExamePorIdAso(Short id_aso);
 }

@@ -12,5 +12,7 @@ public interface AsoRepository extends JpaRepository<Aso, Short> {
 
 	@Query("SELECT a FROM Aso a WHERE a.id = :id")
 	Aso buscaAsoPorId(@Param("id") Short id);
+	
+	
 
 }

@@ -13,5 +13,9 @@ public interface ExameService {
 	List<Exames> buscaExamesPorAso(Short id_aso);
 	
 	Exames alteraExame(Exames exame);
+	
+	void deletaExame(Short id);
+	
+	void deletaExamePorIdAso(Short id_aso);
 
 }

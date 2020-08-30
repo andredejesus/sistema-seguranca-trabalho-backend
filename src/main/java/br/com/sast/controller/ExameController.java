@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,5 +42,15 @@ public class ExameController {
 	public Exames alteraExames(@RequestBody @Valid Exames exame) {
 		return exameService.alteraExame(exame);
 	}
+	
+	@DeleteMapping("exame/{id}")
+	public void deletaExame(@PathVariable("id") Short id) {
+		exameService.deletaExame(id);
+	}
+	
+	//@DeleteMapping("exame/{id_aso}")
+	//public void deletaExamePorIdAso(@PathVariable("id_aso") Short id_aso) {
+		//exameService.deletaExamePorIdAso(id_aso);
+	//}
 
 }

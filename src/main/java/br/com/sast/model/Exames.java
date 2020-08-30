@@ -1,14 +1,10 @@
 package br.com.sast.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -31,14 +27,14 @@ public class Exames {
 	private String data_vencimento;
 	
 	@Column(nullable = false)
+	private Integer dias_vencimento;
+	
+	@Column(nullable = false)
 	@NotEmpty
 	private String status;
 	
 	private Short id_aso;
 	
-	//@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	//@JoinColumn(name = "id_aso", nullable = false)
-	//private Aso aso;
 	
 	// Gests e Sets
 
@@ -90,16 +86,13 @@ public class Exames {
 		this.id_aso = id_aso;
 	}
 
-	//public Aso getAso() {
-		//return aso;
-	//}
+	public Integer getDias_vencimento() {
+		return dias_vencimento;
+	}
 
-	//public void setAso(Aso aso) {
-		//this.aso = aso;
-	//}
-	
-	
-	
-	
+	public void setDias_vencimento(Integer dias_vencimento) {
+		this.dias_vencimento = dias_vencimento;
+	}
+
 
 }
