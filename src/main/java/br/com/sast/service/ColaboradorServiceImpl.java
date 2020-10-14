@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.sast.dto.FiltroColaboradorDTO;
 import br.com.sast.model.Colaborador;
 import br.com.sast.model.DadosEmpresa;
 import br.com.sast.repository.ColaboradorRepository;
@@ -19,6 +20,7 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 	
 	@Autowired
 	private DadosEmpresaRepository dr;
+	
 	
 	@Override
 	public void salvarColaborador(Colaborador colaborador) {
@@ -50,25 +52,8 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 	}
 
 	@Override
-	public List<Colaborador> filtroColaboradores(String nome, 
-												 String rg, 
-												 String cpf, 
-												 String data_nascimento, 
-												 String data_admissao, 
-												 String funcao,
-												 String departamento,
-												 String lotacao,
-												 String situacao) {
-		
-		return cr.filtroColaboradores(nome, 
-									  rg, 
-									  cpf, 
-									  data_nascimento, 
-									  data_admissao, 
-									  funcao,
-									  departamento,
-									  lotacao,
-									  situacao);
+	public List<Colaborador> filtroColaboradores(FiltroColaboradorDTO filtroColaborador) {
+		return cr.filtroColaborador(filtroColaborador);
 	}
 
 }

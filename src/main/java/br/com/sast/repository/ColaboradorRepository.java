@@ -1,22 +1,18 @@
 package br.com.sast.repository;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import br.com.sast.model.Colaborador;
+import br.com.sast.repository.colaborador.ColaboradorQuery;
 
-@Repository
-public interface ColaboradorRepository extends JpaRepository<Colaborador, Short> {
+public interface ColaboradorRepository extends JpaRepository<Colaborador, Short>, ColaboradorQuery {
 	
 	@Query("SELECT c FROM Colaborador c WHERE c.id = :id")
 	Colaborador buscarColaborador(@Param("id") Short id);
 	
-	@Query("SELECT c FROM Colaborador c JOIN c.dadosEmpresa WHERE c.nome = :nome "
+	/*@Query("SELECT c FROM ColaboradorQuery c JOIN c.dadosEmpresa WHERE c.nome = :nome "
 											  + "or c.rg = :rg "
 											  + "or c.cpf = :cpf "
 											  + "or c.data_nascimento = :data_nascimento "
@@ -34,6 +30,6 @@ public interface ColaboradorRepository extends JpaRepository<Colaborador, Short>
 										  @Param("funcao") String funcao,
 										  @Param("departamento") String departamento,
 										  @Param("lotacao") String lotacao,
-										  @Param("situacao") String situacao);
+										  @Param("situacao") String situacao);*/
 
 }

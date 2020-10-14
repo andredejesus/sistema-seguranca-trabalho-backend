@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sast.dto.FiltroColaboradorDTO;
 import br.com.sast.model.Colaborador;
 import br.com.sast.model.DadosEmpresa;
 import br.com.sast.service.ColaboradorService;
@@ -60,27 +61,9 @@ public class ColaboradorController {
 
 	
 	@GetMapping("colaboradores/filtro")
-	public List<Colaborador> filtroColaborador(@PathParam("nome") String nome, 
-											   @PathParam("rg") String rg, 
-											   @PathParam("cpf") String cpf,
-											   @PathParam("data_nascimento") String data_nascimento,
-											   @PathParam("data_admissao") String data_admissao,
-											   @PathParam("funcao") String funcao,
-											   @PathParam("departamento") String departamento,
-											   @PathParam("lotacao") String lotacao,
-											   @PathParam("situacao") String situacao){
-		
+	public List<Colaborador> filtroColaborador(@RequestBody FiltroColaboradorDTO filtroColaborador){
 
-		
-	return colaboradorService.filtroColaboradores(nome, 
-			  rg, 
-			  cpf, 
-			  data_nascimento,
-			  data_admissao,
-			  funcao,
-			  departamento,
-			  lotacao,
-			  situacao);
+	return colaboradorService.filtroColaboradores(filtroColaborador);
 
 	}
 	

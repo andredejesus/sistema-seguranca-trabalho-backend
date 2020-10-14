@@ -102,7 +102,7 @@ public class Colaborador implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Colaborador [id=" + id + ", nome=" + nome + ", data_nascimento=" + data_nascimento + ", rg=" + rg
+		return "ColaboradorQuery [id=" + id + ", nome=" + nome + ", data_nascimento=" + data_nascimento + ", rg=" + rg
 				+ ", cpf=" + cpf + ", dadosEmpresa=" + dadosEmpresa + "]";
 	}
 	

@@ -93,11 +93,11 @@ public class DadosEmpresa {
 				+ departamento + ", data_admissao=" + data_admissao + ", situacao=" + situacao + "]";
 	}
 
-	//public Colaborador getColaborador() {
+	//public ColaboradorQuery getColaborador() {
 		//return colaborador;
 	//}
 
-	//public void setColaborador(Colaborador colaborador) {
+	//public void setColaborador(ColaboradorQuery colaborador) {
 		//this.colaborador = colaborador;
 	//}
 	
