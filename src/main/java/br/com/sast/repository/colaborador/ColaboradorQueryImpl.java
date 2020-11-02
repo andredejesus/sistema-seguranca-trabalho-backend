@@ -49,7 +49,7 @@ public class ColaboradorQueryImpl implements ColaboradorQuery {
 				
 				Short cdDadosEmpresa = Short.parseShort(w[5].toString());
 				empresa = empresaRepository.findById(cdDadosEmpresa).get();
-				colab.setDadosEmpresa(empresa);
+				//colab.setDadosEmpresa(empresa);
 	
 			} catch (Exception e) {
 				colab = null;

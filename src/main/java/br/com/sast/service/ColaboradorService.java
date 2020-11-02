@@ -8,7 +8,7 @@ import br.com.sast.model.Colaborador;
 
 public interface ColaboradorService {
 
-	void salvarColaborador(Colaborador colaborador);
+	Colaborador salvarColaborador(Colaborador colaborador);
 	
 	Colaborador buscarColaborador(Short id);
 	

@@ -45,10 +45,9 @@ public class Colaborador implements Serializable {
 	@NotEmpty(message = "{campo.cpf.obrigatorio}")
 	private String cpf;
 	
-	@OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-	@JoinColumn(name = "id_dados_empresa", unique = true, nullable = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_empresa",referencedColumnName = "id")
 	private DadosEmpresa dadosEmpresa;
-	
 	
 	/* Gets e Sets */
 
@@ -92,6 +91,7 @@ public class Colaborador implements Serializable {
 		this.cpf = cpf;
 	}
 
+
 	public DadosEmpresa getDadosEmpresa() {
 		return dadosEmpresa;
 	}
@@ -103,7 +103,7 @@ public class Colaborador implements Serializable {
 	@Override
 	public String toString() {
 		return "ColaboradorQuery [id=" + id + ", nome=" + nome + ", data_nascimento=" + data_nascimento + ", rg=" + rg
-				+ ", cpf=" + cpf + ", dadosEmpresa=" + dadosEmpresa + "]";
+				+ ", cpf=" + cpf + "]";
 	}
 	
 	

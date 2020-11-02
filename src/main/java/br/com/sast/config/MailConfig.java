@@ -33,13 +33,10 @@ public class MailConfig {
 		 props.put("mail.smtp.starttls.enable", true);
 		 props.put("mail.smtp.connectiontimeout", 10000);
 		 
-		 
-		 
-		 
-		 EmailAttachment anexo = new EmailAttachment();
+		 /*EmailAttachment anexo = new EmailAttachment();
 		 anexo.setPath("/home/vector/Documentos/teste.pdf");
 		 anexo.setDisposition(EmailAttachment.ATTACHMENT);
-		 anexo.setDescription("Arquivo de teste");
+		 anexo.setDescription("Arquivo de teste");*/
 		 
 		 mailSender.setJavaMailProperties(props);
 		

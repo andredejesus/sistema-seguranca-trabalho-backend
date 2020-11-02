@@ -2,11 +2,14 @@ package br.com.sast.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -35,7 +38,6 @@ public class DadosEmpresa {
 	@Column(length = 50, nullable = false)
 	@NotEmpty(message = "{campo.situacao.obrigatorio}")
 	private String situacao;
-	
 	
 	/* Gets e Sets */
 
@@ -86,6 +88,7 @@ public class DadosEmpresa {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
+	
 
 	@Override
 	public String toString() {
@@ -93,13 +96,7 @@ public class DadosEmpresa {
 				+ departamento + ", data_admissao=" + data_admissao + ", situacao=" + situacao + "]";
 	}
 
-	//public ColaboradorQuery getColaborador() {
-		//return colaborador;
-	//}
-
-	//public void setColaborador(ColaboradorQuery colaborador) {
-		//this.colaborador = colaborador;
-	//}
+	
 	
 	
 	

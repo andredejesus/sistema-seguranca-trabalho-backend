@@ -18,14 +18,10 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 	@Autowired
 	private ColaboradorRepository cr;
 	
-	@Autowired
-	private DadosEmpresaRepository dr;
-	
 	
 	@Override
-	public void salvarColaborador(Colaborador colaborador) {
-		cr.save(colaborador);
-		dr.save(colaborador.getDadosEmpresa());
+	public Colaborador salvarColaborador(Colaborador colaborador) {
+		return cr.save(colaborador);
 	}
 
 	@Override
