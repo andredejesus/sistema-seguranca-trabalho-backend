@@ -2,6 +2,7 @@ package br.com.sast.service;
 
 import java.util.List;
 
+import org.hibernate.loader.plan.build.spi.ReturnGraphTreePrinter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +61,12 @@ public class TreinamentoService {
 		}else {
 			return "false";
 		}
+		
+	}
+	
+	public Treinamento buscaTreinamentoPorId(Short id) {
+		
+		return treinamentoRepository.findById(id).get();
 		
 	}
 	

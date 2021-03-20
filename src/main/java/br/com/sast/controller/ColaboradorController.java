@@ -41,7 +41,7 @@ public class ColaboradorController {
 	private DadosEmpresaService dadosEmpresaService;
 	
 	
-	@PostMapping
+	@PostMapping("colaboradores")
 	public ResponseEntity<Colaborador> salvarColaborador(@RequestBody @Valid Colaborador colaborador) {
 		
 		Colaborador colaboradorRetornado = colaboradorService.salvarColaborador(colaborador);
@@ -70,7 +70,7 @@ public class ColaboradorController {
 	}
 
 	
-	@GetMapping("colaboradores/filtro")
+	@PostMapping("colaboradores/filtro")
 	public List<Colaborador> filtroColaborador(@RequestBody FiltroColaboradorDTO filtroColaborador){
 
 	return colaboradorService.filtroColaboradores(filtroColaborador);

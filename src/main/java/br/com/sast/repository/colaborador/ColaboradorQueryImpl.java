@@ -25,7 +25,7 @@ public class ColaboradorQueryImpl implements ColaboradorQuery {
 	@Override
 	public List<Colaborador> filtroColaborador(FiltroColaboradorDTO filtroColaborador) {
 
-		String sql = "select c.id, c.nome, c.rg, c.cpf, c.data_nascimento, c.id_dados_empresa from colaborador as c inner join dados_empresa as d on d.id = c.id_dados_empresa " 
+		String sql = "select c.id, c.nome, c.rg, c.cpf, c.data_nascimento, c.id_empresa from colaborador as c inner join dados_empresa as d on d.id = c.id_empresa " 
 		+ restricoes(filtroColaborador);
 		
 		System.out.println(sql);

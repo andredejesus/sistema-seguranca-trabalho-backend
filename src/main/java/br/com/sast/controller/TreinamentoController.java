@@ -2,6 +2,8 @@ package br.com.sast.controller;
 
 import java.util.List;
 
+import javax.validation.ReportAsSingleViolation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -76,6 +78,19 @@ public class TreinamentoController {
 			return new ResponseEntity<>(HttpStatus.valueOf(400));
 		}
 		
+	}
+	
+
+	@GetMapping("treinamento/{id}")
+	public ResponseEntity<?> buscaTreinamento(@PathVariable("id") Short id) {
+		
+		Treinamento treinamento = this.treinamentoService.buscaTreinamentoPorId(id);
+		
+		if(treinamento == null) {
+			return new ResponseEntity<>(HttpStatus.valueOf(400));
+		}
+		
+		return new ResponseEntity<Treinamento>(treinamento, HttpStatus.OK);
 	}
 	
 }
