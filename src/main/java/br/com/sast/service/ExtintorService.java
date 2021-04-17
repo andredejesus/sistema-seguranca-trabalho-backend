@@ -27,5 +27,25 @@ public class ExtintorService {
 		return this.extintorRepository.findAll();
 	}
 	
+	public Extintor alteraExtintor(Short id, Extintor extintor) {
+		
+		extintor.setId(id);
+		
+		Extintor extintorRetorno = this.extintorRepository.save(extintor);
+		
+		return extintorRetorno;
+		
+	}
+	
+	public void deletaExtintor(Short id) {
+		
+	 this.extintorRepository.deleteById(id);
+		
+	}
+	
+	public Extintor buscaExtintorPorId(Short id) {
+		return this.extintorRepository.findById(id).get();
+	}
+	
 	
 }
