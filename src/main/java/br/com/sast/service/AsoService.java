@@ -2,6 +2,7 @@ package br.com.sast.service;
 
 import java.util.List;
 
+import br.com.sast.dto.AsoFiltroDTO;
 import br.com.sast.model.Aso;
 
 public interface AsoService {
@@ -15,5 +16,7 @@ public interface AsoService {
 	void deletaAso(Short id);
 	
 	Aso buscaAsoPorId(Short id);
+	
+	List<Aso> filtroAso(AsoFiltroDTO asoDto);
 
 }

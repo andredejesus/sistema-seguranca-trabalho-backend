@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.sast.dto.TreinamentoDTO;
+import br.com.sast.dto.TreinamentoFiltroDTO;
 import br.com.sast.model.Colaborador;
 import br.com.sast.model.Treinamento;
 import br.com.sast.repository.ColaboradorRepository;
@@ -68,6 +69,10 @@ public class TreinamentoService {
 		
 		return treinamentoRepository.findById(id).get();
 		
+	}
+	
+	public List<Treinamento> filtroTreinamento(TreinamentoFiltroDTO dto){
+		return treinamentoRepository.filtroTreinamento(dto);
 	}
 	
 }

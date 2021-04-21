@@ -25,7 +25,8 @@ public class ColaboradorQueryImpl implements ColaboradorQuery {
 	@Override
 	public List<Colaborador> filtroColaborador(FiltroColaboradorDTO filtroColaborador) {
 
-		String sql = "select c.id, c.nome, c.rg, c.cpf, c.data_nascimento, c.id_empresa from colaborador as c inner join dados_empresa as d on d.id = c.id_empresa " 
+		String sql = "select c.id, c.nome, c.rg, c.cpf, c.data_nascimento, c.id_empresa from colaborador as c "
+				+ "inner join dados_empresa as d on d.id = c.id_empresa " 
 		+ restricoes(filtroColaborador);
 		
 		System.out.println(sql);
@@ -49,7 +50,7 @@ public class ColaboradorQueryImpl implements ColaboradorQuery {
 				
 				Short cdDadosEmpresa = Short.parseShort(w[5].toString());
 				empresa = empresaRepository.findById(cdDadosEmpresa).get();
-				//colab.setDadosEmpresa(empresa);
+				colab.setDadosEmpresa(empresa);
 	
 			} catch (Exception e) {
 				colab = null;

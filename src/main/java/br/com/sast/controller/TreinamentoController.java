@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sast.dto.TreinamentoDTO;
+import br.com.sast.dto.TreinamentoFiltroDTO;
 import br.com.sast.model.Treinamento;
 import br.com.sast.service.TreinamentoService;
 
@@ -91,6 +92,18 @@ public class TreinamentoController {
 		}
 		
 		return new ResponseEntity<Treinamento>(treinamento, HttpStatus.OK);
+	}
+	
+	@PostMapping("/treinamento/filtro")
+	public ResponseEntity<?> filtroTreinamento(@RequestBody TreinamentoFiltroDTO dto){
+		
+		List<Treinamento> treinamentos = this.treinamentoService.filtroTreinamento(dto);
+		
+		if(treinamentos.isEmpty()) {
+			return new ResponseEntity<Treinamento>(HttpStatus.valueOf(400));
+		}
+		
+		return new ResponseEntity<List<Treinamento>>(treinamentos, HttpStatus.OK);
 	}
 	
 }
