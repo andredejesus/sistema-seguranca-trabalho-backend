@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sast.dto.ExtintorFiltroDTO;
 import br.com.sast.model.Extintor;
 import br.com.sast.service.ExtintorService;
 
@@ -81,6 +82,18 @@ public class ExtintorController {
 		}
 		
 		return new ResponseEntity<Extintor>(extintor, HttpStatus.OK);
+	}
+	
+	@PostMapping("extintor/filtro")
+	public ResponseEntity<?> filtroExtintor(@RequestBody ExtintorFiltroDTO dto){
+		
+		List<Extintor> extintoresRetorno = this.extintorService.filtroExtintor(dto);
+		
+		if(extintoresRetorno == null) {
+			return new ResponseEntity<>(HttpStatus.valueOf(400));
+		}
+		
+		return new ResponseEntity<List<Extintor>>(extintoresRetorno, HttpStatus.OK);
 	}
 	
 	

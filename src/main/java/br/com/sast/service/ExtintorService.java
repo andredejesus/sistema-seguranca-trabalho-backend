@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.sast.dto.ExtintorFiltroDTO;
 import br.com.sast.model.Extintor;
 import br.com.sast.repository.ExtintorRepository;
 
@@ -45,6 +46,10 @@ public class ExtintorService {
 	
 	public Extintor buscaExtintorPorId(Short id) {
 		return this.extintorRepository.findById(id).get();
+	}
+	
+	public List<Extintor> filtroExtintor(ExtintorFiltroDTO dto){
+		return this.extintorRepository.filtroExtintor(dto);
 	}
 	
 	
