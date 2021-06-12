@@ -2,6 +2,8 @@ package br.com.sast.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -96,6 +98,12 @@ public class ExtintorController {
 		return new ResponseEntity<List<Extintor>>(extintoresRetorno, HttpStatus.OK);
 	}
 	
-	
+	@GetMapping("extintor/exportar-csv")
+	public ResponseEntity<?> exportarCSV(HttpServletResponse response){
+		
+		this.extintorService.exportarCSV(response);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 	
 }

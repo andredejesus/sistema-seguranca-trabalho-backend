@@ -1,11 +1,19 @@
 package br.com.sast.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -35,8 +43,8 @@ public class Aso {
 	@NotEmpty
 	private String data_vencimento;
 	
-	//@OneToMany(mappedBy = "aso", fetch = FetchType.LAZY)
-	//private List<Exames> exames = new ArrayList<>();
+	@OneToMany(mappedBy = "aso", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Exames> exames = new ArrayList<>();
 	
 	
 	// Gets e Sets
@@ -89,13 +97,13 @@ public class Aso {
 		this.data_vencimento = data_vencimento;
 	}
 
-	//public List<Exames> getExames() {
-		//return exames;
-	//}
+	public List<Exames> getExames() {
+		return exames;
+	}
 
-	//public void setExames(List<Exames> exames) {
-		//this.exames = exames;
-	//}
+	public void setExames(List<Exames> exames) {
+		this.exames = exames;
+	}
 	
 	
 	

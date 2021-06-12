@@ -1,11 +1,17 @@
 package br.com.sast.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Exames {
@@ -33,7 +39,12 @@ public class Exames {
 	@NotEmpty
 	private String status;
 	
-	private Short id_aso;
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(columnDefinition = "aso_id", referencedColumnName = "id")
+	private Aso aso;
+	
+	//private Short id_aso;
 	
 	
 	// Gests e Sets
@@ -78,13 +89,6 @@ public class Exames {
 		this.status = status;
 	}
 
-	public Short getId_aso() {
-		return id_aso;
-	}
-
-	public void setId_aso(Short id_aso) {
-		this.id_aso = id_aso;
-	}
 
 	public Integer getDias_vencimento() {
 		return dias_vencimento;
@@ -94,5 +98,14 @@ public class Exames {
 		this.dias_vencimento = dias_vencimento;
 	}
 
+	public Aso getAso() {
+		return aso;
+	}
+
+	public void setAso(Aso aso) {
+		this.aso = aso;
+	}
+
+	
 
 }

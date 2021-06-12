@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sast.model.Aso;
 import br.com.sast.model.Exames;
+import br.com.sast.service.AsoService;
 import br.com.sast.service.ExameService;
 
 @RestController
@@ -25,6 +27,9 @@ public class ExameController {
 	
 	@Autowired
 	private ExameService exameService;
+	
+	@Autowired
+	private AsoService asoService;
 	
 	@PostMapping("exame")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -35,7 +40,19 @@ public class ExameController {
 	@GetMapping("exame/{id_aso}")
 	@ResponseStatus(HttpStatus.OK)
 	public List<Exames> buscaExamesPorAso(@PathVariable("id_aso") Short id_aso){
-		return exameService.buscaExamesPorAso(id_aso);
+		
+		Aso aso = asoService.buscaAsoPorId(id_aso);
+		
+		if(aso != null) {
+			
+			List<Exames> exames = exameService.buscaExamesPorAso(aso);
+			return exames;
+			
+		}else {
+			return null;
+		}
+		
+		
 	}
 	
 	@PutMapping("exame")
@@ -43,10 +60,10 @@ public class ExameController {
 		return exameService.alteraExame(exame);
 	}
 	
-	@DeleteMapping("exame/{id}")
-	public void deletaExame(@PathVariable("id") Short id) {
-		exameService.deletaExame(id);
-	}
+	//@DeleteMapping("exame/{id}")
+	//public void deletaExame(@PathVariable("id") Short id) {
+	//	exameService.deletaExame(id);
+	//}
 	
 	//@DeleteMapping("exame/{id_aso}")
 	//public void deletaExamePorIdAso(@PathVariable("id_aso") Short id_aso) {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.sast.model.Aso;
 import br.com.sast.model.Exames;
 import br.com.sast.repository.ExamesRepository;
 
@@ -25,8 +26,8 @@ public class ExameServiceImpl implements ExameService {
 	}
 
 	@Override
-	public List<Exames> buscaExamesPorAso(Short id_aso) {
-		return er.buscaExamesPorAso(id_aso);
+	public List<Exames> buscaExamesPorAso(Aso aso) {
+		return er.findByAso(aso);
 	}
 
 	@Override
@@ -34,16 +35,16 @@ public class ExameServiceImpl implements ExameService {
 		return er.save(exame);
 	}
 
-	@Override
-	public void deletaExame(Short id) {
-		er.deleteById(id);
+	//@Override
+	//public void deletaExame(Short id) {
+	//	er.deleteById(id);
 		
-	}
+	//}
 
-	@Override
-	public void deletaExamePorIdAso(Short id_aso) {
-		er.deletaExamePorIdAso(id_aso);
-	}
+	//@Override
+	//public void deletaExamePorIdAso(Short id_aso) {
+		//er.deletaExamePorIdAso(id_aso);
+	//}
 
 
 }
