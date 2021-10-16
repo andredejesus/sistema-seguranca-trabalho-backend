@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.influx.InfluxDbOkHttpClientBuilderProvider;
 
 import br.com.sast.dto.AsoFiltroDTO;
 import br.com.sast.model.Aso;
@@ -19,9 +17,6 @@ public class AsoQueryImpl implements AsoQuery{
 	
 	@PersistenceContext
 	private EntityManager em;
-	
-	@Autowired
-	private AsoRepository asoRepository;
 
 	@SuppressWarnings("unchecked")
 	@Override

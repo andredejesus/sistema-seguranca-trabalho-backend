@@ -2,6 +2,8 @@ package br.com.sast.controller;
 
 import java.util.List;
 
+import org.modelmapper.Converters.Collection;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.stream.Collectors;
 
+import br.com.sast.dto.CabecalhoChecklistDTO;
 import br.com.sast.dto.ChecklistDTO;
+import br.com.sast.model.CabecalhoChecklist;
+import br.com.sast.model.Checklist;
 import br.com.sast.service.ChecklistService;
 import br.com.sast.util.Retorno;
 
@@ -23,15 +29,18 @@ public class ChecklistController {
 	@Autowired
 	private ChecklistService checklistService;
 	
+	@Autowired
+	private ModelMapper modelMapper;
+	
 	@PostMapping("/checklist/salvaChecklist")
-	public ResponseEntity<?> salvaChecklist(@RequestBody ChecklistDTO checklistDTO){
+	public ResponseEntity<?> salvaChecklist(@RequestBody CabecalhoChecklistDTO cabecalhoChecklistDTO){
 		
-		Retorno retorno = this.checklistService.salvaCabecalhoChecklist(checklistDTO);
+		CabecalhoChecklist cabecalhoChecklistRetorno = this.checklistService.salvaChecklist(modelMapper.map(cabecalhoChecklistDTO, CabecalhoChecklist.class));
 		
-		if(retorno.isTemErro()) {
-			return new ResponseEntity<>(retorno, HttpStatus.NOT_FOUND);
+		if(cabecalhoChecklistRetorno == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}else {
-			return new ResponseEntity<>(retorno, HttpStatus.CREATED);
+			return new ResponseEntity<>(modelMapper.map(cabecalhoChecklistRetorno, CabecalhoChecklistDTO.class), HttpStatus.CREATED);
 		}
 		
 	}
@@ -39,26 +48,27 @@ public class ChecklistController {
 	@GetMapping("checklist/listaCabecalhos")
 	public ResponseEntity<?> listaCabecalhos(){
 		
-		Retorno retorno = this.checklistService.listaCabecalhos();
+		List<CabecalhoChecklist> listaCabecalhos = this.checklistService.listaCabecalhos();
 		
-		if(retorno.isTemErro()) {
-			return new ResponseEntity<>(retorno, HttpStatus.NOT_FOUND);
-		}else {
-			return new ResponseEntity<>(retorno, HttpStatus.OK);
-		}
+		List<CabecalhoChecklistDTO> listaCabecalhosDTO = listaCabecalhos.stream()
+				.map(cabecalho -> modelMapper.map(cabecalho, CabecalhoChecklistDTO.class))
+				.collect(Collectors.toList());
+		
+		return new ResponseEntity<>(listaCabecalhosDTO, HttpStatus.OK);
 		
 	}
 	
 	@GetMapping("/checklist/listaChecklists/{idCabecalho}")
-	public ResponseEntity<?> listaChecklists(@PathVariable(value = "idCabecalho") Short idCabecalho){
+	public ResponseEntity<List<ChecklistDTO>> listaChecklists(@PathVariable(value = "idCabecalho") Short idCabecalho){
 		
-		Retorno retorno = this.checklistService.listaChecklists(idCabecalho);
+		List<Checklist> listaChecklists = this.checklistService.listaChecklists(idCabecalho);
 		
-		if(retorno.isTemErro()) {
-			return new ResponseEntity<>(retorno, HttpStatus.NOT_FOUND);
-		}else {
-			return new ResponseEntity<>(retorno, HttpStatus.OK);
-		}
+		List<ChecklistDTO> listaChecklistsDTO = listaChecklists.stream()
+				.map(checklist -> modelMapper.map(checklist, ChecklistDTO.class)).collect(Collectors.toList());
+		
+	
+		return new ResponseEntity<>(listaChecklistsDTO, HttpStatus.OK);
+
 		
 		
 	}

@@ -1,29 +1,26 @@
 package br.com.sast.dto;
 
-import java.util.List;
-
-import br.com.sast.model.Checklist;
-import br.com.sast.model.CabecalhoChecklist;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ChecklistDTO {
 	
-	private CabecalhoChecklist cabecalhoChecklist;
-	private List<Checklist> checklists;
+	private Short id;
+	private String nomeChecklist;
+
 	
-	
-	public CabecalhoChecklist getCabecalhoChecklist() {
-		return cabecalhoChecklist;
+	public Short getId() {
+		return id;
 	}
-	public void setCabecalhoChecklist(CabecalhoChecklist cabecalhoChecklist) {
-		this.cabecalhoChecklist = cabecalhoChecklist;
+	public void setId(Short id) {
+		this.id = id;
 	}
-	public List<Checklist> getChecklists() {
-		return checklists;
+	public String getNomeChecklist() {
+		return nomeChecklist;
 	}
-	public void setChecklists(List<Checklist> checklists) {
-		this.checklists = checklists;
+	public void setNomeChecklist(String nomeChecklist) {
+		this.nomeChecklist = nomeChecklist;
 	}
-	
+
 	
 
 }

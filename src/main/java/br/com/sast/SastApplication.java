@@ -1,10 +1,9 @@
 package br.com.sast;
 
-import org.apache.catalina.core.ApplicationContext;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import br.com.sast.model.Email;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SastApplication {
@@ -13,5 +12,11 @@ public class SastApplication {
 		SpringApplication.run(SastApplication.class, args);
 		
 	}
+	
+   @Bean
+   public ModelMapper modelMapper() {
+      ModelMapper modelMapper = new ModelMapper();
+      return modelMapper;
+   }
 
 }

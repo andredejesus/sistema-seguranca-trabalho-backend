@@ -2,7 +2,7 @@ package br.com.sast.config;
 
 import java.util.Properties;
 
-import org.apache.commons.mail.EmailAttachment;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

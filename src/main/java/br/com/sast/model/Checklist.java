@@ -1,10 +1,14 @@
 package br.com.sast.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -17,8 +21,8 @@ public class Checklist {
 	@Column
 	private String nomeChecklist;
 	
-	@Column
-	private Short idCabecalhoChecklist;
+	@ManyToOne
+	private CabecalhoChecklist cabecalhoChecklist;
 
 	public Short getId() {
 		return id;
@@ -36,13 +40,17 @@ public class Checklist {
 		this.nomeChecklist = nomeChecklist;
 	}
 
-	public Short getIdCabecalhoChecklist() {
-		return idCabecalhoChecklist;
+	public CabecalhoChecklist getCabecalhoChecklist() {
+		return cabecalhoChecklist;
 	}
 
-	public void setIdCabecalhoChecklist(Short idCabecalhoChecklist) {
-		this.idCabecalhoChecklist = idCabecalhoChecklist;
+	public void setCabecalhoChecklist(CabecalhoChecklist cabecalhoChecklist) {
+		this.cabecalhoChecklist = cabecalhoChecklist;
 	}
+
+	
+
+	
 
 	
 	
